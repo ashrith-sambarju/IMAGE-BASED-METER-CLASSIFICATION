@@ -46,17 +46,22 @@ The system uses a safe fallback mechanism for unseen meters:
    * `cluster_id = -1`: Noise/junk images.
    * `cluster_id >= 0`: New meter candidates for dataset expansion.
 
-##  Project Structure
-```text
-METER CLASSIFICATION/
-├── src/
-│   ├── train.py                     # Trains the ResNet18 classifier
-│   ├── evaluate.py                  # Generates accuracy and confusion matrix
-│   ├── predict.py                   # Single image inference
-│   ├── url_predict_batch.py         # Batch URL inference with UNKNOWN logic
-│   ├── extract_unknown_embeddings.py# Extracts features for unsure images
-│   ├── cluster_unknown_embeddings.py# Runs HDBSCAN clustering
-│   └── dashboard.py                 # Streamlit UI
-├── data/                            # Processed train/test/val splits
-├── models/                          # final_meter_model.pth
-└── reports/                         # Metadata, embeddings, and clusters
+## Execution Order
+Environment Activation: .\.venv\Scripts\Activate.ps1
+
+Model Training: python src/train.py
+
+Model Evaluation: python src/evaluate.py
+
+Single Image Test: python src/predict.py --image path/to/image.jpg
+
+Batch URL Inference: python src/url_predict_batch.py
+
+Feature Extraction: python src/extract_unknown_embeddings.py
+
+Clustering: python src/cluster_unknown_embeddings.py
+
+Dashboard Launch: streamlit run src/dashboard.py
+
+## Note: 
+For a detailed understanding of the project, please refer to the project overview document located in the docs folder within this repository.
