@@ -1,0 +1,7 @@
+# Exclude the dataset
+data/
+
+# Exclude the virtual environment (if not already there)
+.venv/
+venv/
+    
