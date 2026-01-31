@@ -41,7 +41,7 @@ for cls in os.listdir(SOURCE_DIR):
     make_dir(train_dir)
 
     # 🔹 Tiny classes → train only
-    if n < 10:
+    if n < 10:  
         for img in images:
             shutil.copy(
                 os.path.join(cls_path, img),
@@ -54,7 +54,7 @@ for cls in os.listdir(SOURCE_DIR):
     if n < 20:
         split_train = int(0.8 * n)
         make_dir(val_dir)
-
+    
         for img in images[:split_train]:
             shutil.copy(os.path.join(cls_path, img), os.path.join(train_dir, img))
         for img in images[split_train:]:
@@ -67,7 +67,7 @@ for cls in os.listdir(SOURCE_DIR):
     train_end = int(TRAIN_RATIO * n)
     val_end = train_end + int(VAL_RATIO * n)
 
-    make_dir(val_dir)   
+    make_dir(val_dir)       
     make_dir(test_dir)
 
     for img in images[:train_end]:
